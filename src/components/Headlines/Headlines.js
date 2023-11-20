@@ -5,6 +5,8 @@ function Headlines( {allArticles} ) {
     const headlineCard = allArticles.articles.map((headline, index) => {
         return <HeadlineCard
             headline={headline.title}
+            content={headline.content}
+            description={headline.description}
             url={headline.url}
             imageURL={headline.urlToImage}
             datePublished={headline.publishedAt}
@@ -14,7 +16,7 @@ function Headlines( {allArticles} ) {
     })
     console.log("HEADLINE CARD", headlineCard)
     return (
-        <div>{headlineCard}</div>
+        <div className="all-headlines">{headlineCard}</div>
     )
 }
 
