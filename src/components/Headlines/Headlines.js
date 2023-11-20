@@ -5,9 +5,9 @@ function formatUSDate(dateString) {
     const dateObject = new Date(dateString);
     if (!isNaN(dateObject.getTime())) {
         const formattedDateString = 
-        (dateObject.getMonth() +1).toString().padStart(2, '0') + '/' +
-        dateObject.getDate().toString().padStart(2, '0') + '/' +
-        dateObject.getFullYear();
+        (dateObject.getUTCMonth() +1).toString().padStart(2, '0') + '/' +
+        dateObject.getUTCDate().toString().padStart(2, '0') + '/' +
+        dateObject.getUTCFullYear();
         return formattedDateString;
     }
     return 'No date available.';
