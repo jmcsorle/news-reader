@@ -1,8 +1,16 @@
 import './HeadlineCard.css';
+import { Link } from 'react-router-dom';
 
-function HeadlineCard() {
+function HeadlineCard( { headline, content, description, url, imageURL, datePublished, id} ) {
+    
     return (
-        <p>This is HeadlineCard</p>
+        <div className="card" key={id} id={id}>
+            <h2>{headline}</h2>
+            <img src={imageURL} alt="" />
+            <p>{description}</p>
+            <Link to={`/details/${id}`}>Read More <span className="sr-only">about {headline}</span></Link>
+        </div>
+
     )
 }
 
