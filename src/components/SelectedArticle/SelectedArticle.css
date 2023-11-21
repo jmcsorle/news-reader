@@ -1,0 +1,105 @@
+h2 {
+    text-align: center;
+    font-size: 1.25rem;
+    padding: 2%;
+}
+
+.content-container {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.image-container {
+    margin: 0 auto;
+}
+
+.image-container img,
+.caption {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.text {
+    position: relative;
+    margin: 0 auto;
+    padding: 2%;
+}
+
+@media screen and (min-width: 769px) {
+    .image-container img,
+    .caption {
+        max-width: 100%;
+        font-size: 1.5rem;
+    }
+
+    .text {
+        max-width: 100%;
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+}
+
+@media screen and (min-width: 1155px) {
+    .image-container img,
+    .caption {
+        max-width: 100%;
+        font-size: 1.75rem;
+    }
+
+    .text {
+        max-width: 100%;
+        font-size: 1.75rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .text {
+        max-width: 71%;
+        font-size: 1.75rem;
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    .image-container img,
+    .caption {
+        max-width: 100%;
+        font-size: 2rem;
+    }
+
+    .text {
+        max-width: 53%;
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 2.15rem;
+    }
+}
+
+@media screen and (min-width: 2560px) {
+    .image-container img,
+    .caption {
+        max-width: 100%;
+        font-size: 3rem;
+    }
+
+    .text {
+        max-width: 40%;
+        font-size: 3rem;
+    }
+
+    h2 {
+        font-size: 3rem;
+    }
+}
+
