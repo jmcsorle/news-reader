@@ -10,14 +10,18 @@ import { useState, useEffect } from 'react';
 
 function App() {
   const [allArticles, setAllArticles] = useState(mockData);
+  const [allArticlesWithIds, setAllArticlesWithIds] = useState([])
   const [error, setError] = useState('');
-  // const [selectedArticle, setSelectedArticle] = useState(0);
 
-  // **useEffect(() => {
+
+  // useEffect(() => {
   //   const getAsyncArticles = async () => {
   //     try {
   //       const articles = await getAllArticles()
-  //       setAllArticles(articles)
+  //       const articlesWithIds = (articles) => {
+  //         return articles.articles.map((article, index) => ({... article, id: index +1}));
+  //       }
+  //       setAllArticles(articlesWithIds(articles))
   //     } catch (error) {
   //       setError(`${error.message}: Something went wrong. Please try again.`)
   //     }
@@ -25,9 +29,30 @@ function App() {
   //   getAsyncArticles()
   // }, [])
 
-  // const handleSelection = () => {
+  
 
-  // }
+  useEffect(() => {
+    const addIdsToArticles = (allArticles) => {
+        return allArticles.articles.map((article, index) => ({...article, id: index +1}));
+      }
+
+    setAllArticlesWithIds(addIdsToArticles(allArticles));
+  }, []); 
+
+  console.log("ALL ARTICLES", allArticles)
+  console.log("WITH IDS", allArticlesWithIds)
+
+  function formatUSDate(dateString) {
+    const dateObject = new Date(dateString);
+    if (!isNaN(dateObject.getTime())) {
+        const formattedDateString = 
+        (dateObject.getUTCMonth() +1).toString().padStart(2, '0') + '/' +
+        dateObject.getUTCDate().toString().padStart(2, '0') + '/' +
+        dateObject.getUTCFullYear();
+        return formattedDateString;
+    }
+    return 'No date available.';
+}
 
   return (
   <>
@@ -39,11 +64,11 @@ function App() {
     <Routes>
       <Route
         path="/"
-        element={<Headlines allArticles={allArticles}/>}
+        element={<Headlines allArticlesWithIds={allArticlesWithIds} formatUSDate={formatUSDate} />}
       />
       <Route
         path="/articleDetails/:id"
-        element={<SelectedArticle />}
+        element={<SelectedArticle allArticlesWithIds={allArticlesWithIds} formatUSDate={formatUSDate}/>}
       />
       <Route
         path="*" element={<Error error={error}/>}

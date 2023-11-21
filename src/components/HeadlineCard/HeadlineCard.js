@@ -16,7 +16,7 @@ function HeadlineCard({
       <p>Date Published: {datePublished}</p>
       <img src={imageURL} alt="" />
       <p>{description}</p>
-      <Link to={`/details/${id}`}>
+      <Link to={`/articleDetails/${id}`}>
         Read More <span className="sr-only">about {headline}</span>
       </Link>
     </div>
