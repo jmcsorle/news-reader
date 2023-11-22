@@ -1,0 +1,23 @@
+.fancy-search {
+    margin: 1rem auto;
+    padding: .25rem;
+    text-align: center;
+    
+}
+
+#search,
+button {
+    font-size: 1.25rem;
+
+}
+
+#search {
+    margin: 0 .25rem
+}
+
+button:hover {
+    cursor: pointer;
+    color: white;
+    background-color: #02335E;
+    border-color: #02335E;
+}

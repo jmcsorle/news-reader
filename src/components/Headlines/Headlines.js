@@ -1,8 +1,9 @@
 import './Headlines.css';
 import HeadlineCard from '../HeadlineCard/HeadlineCard';
 
-function Headlines( {allArticlesWithIds, formatUSDate} ) {
-    const headlineCard = allArticlesWithIds.map(article => {
+function Headlines( {allArticlesWithIds, formatUSDate, searchValue} ) {
+    const headlineCard = allArticlesWithIds.filter(article => article.title.toLowerCase().includes(searchValue.toLowerCase()))
+    .map(article => {
         return <HeadlineCard
             headline={article.title}
             content={article.content}

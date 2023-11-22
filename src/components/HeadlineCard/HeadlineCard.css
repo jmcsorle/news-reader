@@ -14,3 +14,9 @@
     position: absolute;
     width: 1px;
   }
+
+  .read-more {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }

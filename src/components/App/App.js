@@ -2,45 +2,33 @@ import './App.css';
 import Header from '../Header/Header';
 import Headlines from '../Headlines/Headlines';
 import SelectedArticle from '../SelectedArticle/SelectedArticle';
+import Search from '../Search/Search';
 import Error from '../Error/Error';
-// **import { getAllArticles } from '../../apiCalls';
-import { mockData } from '../../mockData/mockData';
+import { getAllArticles } from '../../apiCalls';
+// import { mockData } from '../../mockData/mockData';
 import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 function App() {
-  const [allArticles, setAllArticles] = useState(mockData);
+  // const [allArticles, setAllArticles] = useState([]);
   const [allArticlesWithIds, setAllArticlesWithIds] = useState([])
   const [error, setError] = useState('');
-
-
-  // useEffect(() => {
-  //   const getAsyncArticles = async () => {
-  //     try {
-  //       const articles = await getAllArticles()
-  //       const articlesWithIds = (articles) => {
-  //         return articles.articles.map((article, index) => ({... article, id: index +1}));
-  //       }
-  //       setAllArticles(articlesWithIds(articles))
-  //     } catch (error) {
-  //       setError(`${error.message}: Something went wrong. Please try again.`)
-  //     }
-  //   }
-  //   getAsyncArticles()
-  // }, [])
-
-  
+  const [searchValue, setSearchValue] = useState('');
 
   useEffect(() => {
-    const addIdsToArticles = (allArticles) => {
-        return allArticles.articles.map((article, index) => ({...article, id: index +1}));
+    const getAsyncArticles = async () => {
+      try {
+        const articles = await getAllArticles()
+        const articlesWithIds = (articles) => {
+          return articles.articles.map((article, index) => ({... article, id: index +1}));
+        }
+        setAllArticlesWithIds(articlesWithIds(articles))
+      } catch (error) {
+        setError(`${error.message}: Something went wrong. Please try again.`)
       }
-
-    setAllArticlesWithIds(addIdsToArticles(allArticles));
-  }, []); 
-
-  console.log("ALL ARTICLES", allArticles)
-  console.log("WITH IDS", allArticlesWithIds)
+    }
+    getAsyncArticles()
+  }, [])
 
   function formatUSDate(dateString) {
     const dateObject = new Date(dateString);
@@ -58,13 +46,16 @@ function App() {
   <>
    <Header />
    {error ? (
-    <Error error={error} />
-   ) : (
-   <main>
+     <Error error={error} />
+     ) : (
+    <main>
     <Routes>
       <Route
         path="/"
-        element={<Headlines allArticlesWithIds={allArticlesWithIds} formatUSDate={formatUSDate} />}
+        element={<>
+        <Search searchValue={searchValue} setSearchValue={setSearchValue} />
+        <Headlines allArticlesWithIds={allArticlesWithIds} formatUSDate={formatUSDate} searchValue={searchValue} />
+        </>}
       />
       <Route
         path="/articleDetails/:id"

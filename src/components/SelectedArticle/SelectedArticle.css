@@ -1,6 +1,7 @@
 h2 {
     text-align: center;
     font-size: 1.25rem;
+    margin: 0;
     padding: 2%;
 }
 
@@ -10,12 +11,29 @@ h2 {
     flex-direction: column;
 }
 
-.image-container {
-    margin: 0 auto;
+.home-link {
+    margin: 0 auto 1rem auto;
+    background-color: aliceblue;
+    border: 2px solid black;
+    border-radius: 6px;
+    padding: .40rem;
 }
 
-.image-container img,
-.caption {
+.home-link :link,
+.home-link :visited,
+.home-link :active
+{
+    color: #02335E;
+    text-decoration: none;
+}
+
+.home-link :hover {
+    color: white;
+    background-color: #02335E;
+    text-decoration: none;
+}
+
+.image-container img {
     max-width: 100%;
     height: auto;
     display: block;
@@ -28,6 +46,17 @@ h2 {
     padding: 2%;
 }
 
+.date {
+    margin: 1rem 0 0 0;
+    padding: 0;
+}
+
+.source {
+    margin: .5rem 0 0 0;
+    padding: 0;
+}
+
+
 @media screen and (min-width: 769px) {
     .image-container img,
     .caption {
@@ -36,12 +65,15 @@ h2 {
     }
 
     .text {
-        max-width: 100%;
         font-size: 1.5rem;
     }
 
     h2 {
         font-size: 1.6rem;
+    }
+
+    .home-link {
+        font-size: 1.25rem;
     }
 }
 
@@ -53,19 +85,16 @@ h2 {
     }
 
     .text {
-        max-width: 100%;
         font-size: 1.75rem;
     }
 
     h2 {
         font-size: 2rem;
     }
-}
 
-@media screen and (min-width: 1440px) {
-    .text {
-        max-width: 71%;
-        font-size: 1.75rem;
+    .home-link {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
     }
 }
 
@@ -77,12 +106,17 @@ h2 {
     }
 
     .text {
-        max-width: 53%;
         font-size: 2rem;
     }
 
     h2 {
-        font-size: 2.15rem;
+        font-size: 3rem;
+    }
+
+    .home-link {
+        font-size: 1.75rem;
+        padding: .6rem;
+        margin-bottom: 2rem;
     }
 }
 
@@ -94,12 +128,17 @@ h2 {
     }
 
     .text {
-        max-width: 40%;
         font-size: 3rem;
     }
 
     h2 {
-        font-size: 3rem;
+        font-size: 4rem;
+    }
+
+    .home-link {
+        font-size: 2.5rem;
+        padding: .75rem;
+        margin-bottom: 3rem;
     }
 }
 
