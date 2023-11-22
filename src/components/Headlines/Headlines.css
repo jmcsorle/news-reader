@@ -1,10 +1,23 @@
 .all-headlines {
     padding: 20px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 2rem;
   }
 
 .all-headlines img {
     width: 100%;
+}
+
+a:link,
+a:visited,
+a:active
+{
+    color: #02335E;
+}
+
+a:hover {
+  color: white;
+  background-color: #02335E;
+
 }
